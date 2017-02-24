@@ -1,0 +1,38 @@
+---
+driver:
+  name: gce
+  project: my-k8-toy
+  zone: us-central1-f
+  email: jasghar@chef.io
+  tags:
+    - devteam
+    - test-kitchen
+  service_account_scopes:
+    - devstorage.read_write
+    - userinfo.email
+
+provisioner:
+  name: chef_zero
+
+transport:
+  username: jjasghar
+  ssh_key:
+    - ~/.ssh/google_compute_engine
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: centos-7
+    driver:
+      image_project: centos-cloud
+      image_name: centos-7-v20170124
+  - name: ubuntu-16.04
+    driver:
+      image_project: ubuntu-os-cloud
+      image_family: ubuntu-1604-lts
+
+suites:
+  - name: default
+    run_list:
+      - recipe[gcp_demo::default]

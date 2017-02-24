@@ -1,0 +1,8 @@
+.delivery/cli.toml
+.DS_Store
+.delivery/.DS_Store
+.kitchen/
+.delivery/cli.toml
+.envrc
+.direnv/
+.ruby-version
